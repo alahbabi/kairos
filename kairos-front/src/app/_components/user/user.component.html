@@ -1,0 +1,45 @@
+﻿<div class="row">
+        <div class="col-sm-6" >
+                <div class="float-right" style="margin-bottom: 10px">
+                        <input type="text" placeholder="Search" [(ngModel)]="searchText" />
+                    </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Profile</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users | filter:searchText | paginate: {itemsPerPage: 5, currentPage: p};let i = index">
+                        <td>{{user.username}}</td>
+                        <td>{{user.profile}}</td>
+                        <td>
+                            <span>
+                                <button type="button" class="btn btn-info btn-rounded btn-sm my-0" (click)="detailUser(user._id)">Detail</button>
+                            </span>
+                        </td> 
+                        <td>
+                            <span class="table-remove" *ngIf="currentUser.data.user.email != user.email">
+                                <button type="button"class="btn btn-danger btn-rounded btn-sm my-0" (click)="deleteUser(user._id)">Delete</button>
+                            </span>
+                        </td> 
+                        <td>
+                            <span class="table-remove" *ngIf="user.profile == 'Collaborator'">
+                                <button type="button" class="btn btn-warning btn-rounded btn-sm my-0">Tasks</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="float-right">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+        <div class="col-sm-6">
+           <app-user-detail [user]="user"></app-user-detail>
+        </div>
+    </div>
