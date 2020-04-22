@@ -1,9 +1,9 @@
 {
-    "name": "simply",
+    "name": "kairos",
     "version": "1.0.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/alahbabi/simply.git"
+        "url": "https://github.com/alahbabi/kairos.git"
     },
     "scripts": {
         "build": "webpack --mode production",

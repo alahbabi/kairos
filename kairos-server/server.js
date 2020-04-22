@@ -1,12 +1,33 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require('cors');
+const mongoose = require("mongoose");
+const user = require('./routes/user');
+const project = require('./routes/project');
+const task = require('./routes/task');
+const comment = require('./routes/comment');
+const checkAuth = require('./middleware/check-auth')
+const cors = require('cors')
+
+
 var app = express();
+// Database conenction
+mongoose.connect("mongodb://localhost/orange").then(() => {
+  console.log("Connected to Database");
+}).catch((err) => {
+  console.log("Not Connected to Database ERROR! ", err);
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 // Pour autoriser l'accès au serveur node depuis à notre domaine que celui de node
 app.use(cors());
+
+// To Desactivate authentication : app.use("/user", user);
+// To activate anthentication : app.use("/user", checkAuth, user);
+app.use("/users", user);
+app.use("/projects", checkAuth, project);
+app.use("/tasks", checkAuth, task);
+app.use("/comments", checkAuth, comment);
 
 // Starting application
 app.listen(3003 , () => {
