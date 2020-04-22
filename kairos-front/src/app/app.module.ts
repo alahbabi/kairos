@@ -13,12 +13,6 @@ import { UserComponent } from './_components/user';
 import { LoginComponent } from './_components/login';
 import { RegisterComponent } from './_components/register';
 import { AlertComponent } from './_components/alert';
-import { TaskCreationComponent } from './_components/task/task-creation';
-import { TaskListComponent } from './_components/task/task-list';
-import { TaskDetailComponent } from './_components/task/task-detail';
-import { ProjectCreationComponent } from './_components/project/project-creation';
-import { ProjectListComponent } from './_components/project/project-list';
-import { ProjectDetailComponent } from './_components/project/project-detail';
 import { UserDetailComponent } from './_components/user-detail';
 
 @NgModule({
@@ -37,13 +31,7 @@ import { UserDetailComponent } from './_components/user-detail';
         UserDetailComponent,
         LoginComponent,
         RegisterComponent,
-        AlertComponent,
-        TaskCreationComponent,
-        TaskListComponent,
-        TaskDetailComponent,
-        ProjectCreationComponent,
-        ProjectListComponent,
-        ProjectDetailComponent
+        AlertComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

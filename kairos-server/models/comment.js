@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema ;
 
-// Task model
-
 let comment = new Schema ({
     title: {
         type: String,
@@ -22,11 +20,6 @@ let comment = new Schema ({
     owner: { 
         type: Schema.Types.ObjectId, 
         ref: 'User',
-        required: true 
-    },
-    task: { 
-        type: Schema.Types.ObjectId, 
-        ref: 'Task',
         required: true 
     }
 });
